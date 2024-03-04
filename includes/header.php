@@ -19,8 +19,9 @@ switch ($url) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activité 4 - Formulaire inscription</title>
-  <link rel="stylesheet" href="assets/main.css">
+      <link rel="icon" href="./medias/favicon-32x32.png" />
+  <title>Music Vercos Festival</title>
+  <link rel="stylesheet" href="assets/style.css">
   <?php if ($url == 'tableau-de-bord') { ?>
     <link rel="stylesheet" href="assets/dashboard.css">
   <?php } else if ($url == 'tableau-admin') { ?>
@@ -34,13 +35,13 @@ switch ($url) {
 <body>
 
   <div id="header">
-    <div class="logo"></div>
+    <img src="./medias/Capture_d_écran.png" alt="">
     <div>
       <?php if (isset($_SESSION['connecté'])) { ?>
         <a href="deconnexion.php">Déconnexion</a>
       <?php } else { ?>
-        <a href="index.php">Inscription</a>
-        <a href="connexion.php">Connexion</a>
+        <!-- <a href="index.php">Inscription</a>
+        <a href="connexion.php">Connexion</a> -->
       <?php } ?>
     </div>
   </div>

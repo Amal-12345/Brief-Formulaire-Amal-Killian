@@ -1,24 +1,24 @@
-// Récupération des 3 grandes séctions de réservations
+//* Récupération des 3 grandes séctions de réservations
 
 const reservation = document.querySelector("#reservation");
 const options = document.querySelector("#options");
 const coordonnees = document.querySelector("#coordonnees");
-//Section des jour du pass UN jour
+//*Section des jour du pass UN jour
 const pass1JourDate = document.querySelector("#pass1jourDate");
-//Les bouton radio du pass  jour
+//*Les bouton radio du pass  jour
 const boutonRadiopass1JourDate =
   pass1JourDate.querySelectorAll(`input[type="radio"]`);
 
-//Section des jour du pass DEUX jour
+//*Section des jour du pass DEUX jour
 const pass2JoursDate = document.querySelector("#pass2joursDate");
-//Les bouton radio du pass DEUX jour
+//*Les bouton radio du pass DEUX jour
 const boutonRadiopass2JoursDate =
   pass2JoursDate.querySelectorAll(`input[type="radio"]`);
 const choixJour = document.querySelectorAll("div.choixJour");
 
-//Section tarif reduit
+//*Section tarif reduit
 const tarifReduit = document.querySelector("#tarifReduit");
-//Bouton radio des tarifs reduit
+//*Bouton radio des tarifs reduit
 const tarifsReduit = document.querySelectorAll(".tarifsReduit");
 
 const pass1Jour = document.querySelector("#pass1jour");
@@ -172,18 +172,27 @@ pass3Jours.addEventListener("change", () => {
   if (pass3Jours.checked) {
     displayNoneTarif();
   }
-  function displayNoneTarif() {
-    pass2JoursDate.style.display = "none";
-    pass1JourDate.style.display = "none";
-    boutonRadiopass1JourDate.forEach((boutonRadiopass1JourDate) => {
-      boutonRadiopass1JourDate.checked = false;
-    });
-    boutonRadiopass2JoursDate.forEach((boutonRadiopass2JoursDate) => {
-      boutonRadiopass2JoursDate.checked = false;
-    });
-  }
 });
 
+let pass3joursreduit = document.querySelector("#pass3joursreduit");
+console.log(pass3joursreduit);
+
+pass3joursreduit.addEventListener("change", () => {
+  if (pass3joursreduit.checked) {
+    displayNoneTarif();
+    console.log("kk");
+  }
+});
+function displayNoneTarif() {
+  pass2JoursDate.style.display = "none";
+  pass1JourDate.style.display = "none";
+  boutonRadiopass1JourDate.forEach((boutonRadiopass1JourDate) => {
+    boutonRadiopass1JourDate.checked = false;
+  });
+  boutonRadiopass2JoursDate.forEach((boutonRadiopass2JoursDate) => {
+    boutonRadiopass2JoursDate.checked = false;
+  });
+}
 pass1JourReduit.addEventListener("change", () => {
   if (pass1JourDate.style.display == "none") {
     pass1JourDate.style.display = "";
@@ -203,27 +212,57 @@ pass2JoursReduit.addEventListener("change", () => {
 let boutonSuivant = document.querySelector("#boutonSuivant");
 let boutonRetour = document.querySelector("#boutonRetour");
 
+let choisirPlaces = document.querySelector("#choisirPlaces");
+let choisirJour = document.querySelector("#choisirJour");
+choisirPlaces.style.display = "none";
+choisirJour.style.display = "none";
+
 let i = 1;
-//Incrémentation et décrémentation de I pour afficher ou non les differents bloc Reservation/Options/Coordonnées
+let nombrePlaces = document.querySelector("#NombrePlaces");
+const radioButtons = document.querySelectorAll(
+  'input[type="radio"][name="passSelectionDate"]'
+);
+console.log(radioButtons);
+
+//*Incrémentation et décrémentation de I pour afficher ou non les differents bloc Reservation/Options/Coordonnées
 function suivant() {
-  i++;
+  if (
+    nombrePlaces.value >= 1 &&
+    (radioButtons[0].checked ||
+      radioButtons[1].checked ||
+      radioButtons[2].checked ||
+      radioButtons[3].checked ||
+      radioButtons[4].checked ||
+      pass3Jours.checked ||
+      pass3joursreduit.checked)
+  ) {
+    i++;
 
-  if (i == 2) {
-    reservation.style.display = "none";
-    options.style.display = "";
-    coordonnees.style.display = "none";
-  }
+    if (i == 2) {
+      reservation.style.display = "none";
+      options.style.display = "";
+      coordonnees.style.display = "none";
+    }
 
-  if (i == 3) {
-    reservation.style.display = "none";
-    options.style.display = "none";
-    coordonnees.style.display = "";
-  }
+    if (i == 3) {
+      reservation.style.display = "none";
+      options.style.display = "none";
+      coordonnees.style.display = "";
+    }
 
-  if (i == 1) {
-    reservation.style.display = "";
-    options.style.display = "none";
-    coordonnees.style.display = "none";
+    if (i == 1) {
+      reservation.style.display = "";
+      options.style.display = "none";
+      coordonnees.style.display = "none";
+    }
+  } else if (!nombrePlaces.value) {
+    choisirPlaces.style.display = "block";
+  } else if (
+    !pass3Jours.checked &&
+    !pass3joursreduit.checked &&
+    !radioButtons.checked
+  ) {
+    choisirJour.style.display = "block";
   }
 }
 function retour() {
@@ -248,7 +287,7 @@ function retour() {
   }
 }
 
-// Désactiver les bouton suivant et Retour quand on est au début ou a la fin
+//* Désactiver les bouton suivant et Retour quand on est au début ou a la fin
 
 const casqueEnfant = document.querySelector("#casqueEnfant");
 casqueEnfant.style.display = "none";

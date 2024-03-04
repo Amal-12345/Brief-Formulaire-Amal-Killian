@@ -2,8 +2,8 @@
 session_start();
 
 if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
-  // abort
-  header('location:tableau-de-bord.php');
+  // 
+  header('location:tableau-admin.php');
   die;
 }
 
@@ -18,6 +18,7 @@ if (isset($_GET['erreur'])) {
 
 include "includes/header.php";
 ?>
+<link rel="stylesheet" href="./assets/style.css">
   <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
     <h1>Connexion</h1>
     <?php if ($succes) { ?>
@@ -26,10 +27,14 @@ include "includes/header.php";
         Maintenant vous pouvez vous connecter pour consulter toutes vos réservations.
       </div>
     <?php } ?>
+    <div class="input-group">
     <label for="mail">Mail :</label>
-    <input type="email" name="mail" id="mail" required>
+    <input type="email" class="input-group" name="mail" id="mail" required>
+    </div>
+    <div class="input-group">
     <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" class="input-group" name="password" id="password" required>
+    </div>
     <div id="message"></div>
     <?php if ($echec) { ?>
       <div class="message echec">

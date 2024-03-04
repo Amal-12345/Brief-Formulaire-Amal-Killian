@@ -2,9 +2,10 @@
 session_start();
 require 'src/classes/User.php';
 require 'src/classes/Database.php';
+require './src/classes/Reservations.php';
 
 if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
-  // abort
+
   header('location: connexion.php');
   die;
 }
@@ -27,6 +28,7 @@ if (isset($_GET['section'])) {
 } else {
   $section = null;
 }
+
 include 'includes/header.php';
 ?>
 <main>

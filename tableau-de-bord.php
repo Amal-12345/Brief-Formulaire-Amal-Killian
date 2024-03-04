@@ -3,7 +3,7 @@ session_start();
 require 'src/classes/User.php';
 
 if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
-  // abort
+ 
   header('location: connexion.php');
   die;
 }
