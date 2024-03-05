@@ -11,7 +11,7 @@ final class Database {
     $utilisateurs = [];
     
     while (($user = fgetcsv($connexion, 1000, ",")) !== FALSE) {
-      $utilisateurs[] = new User ($user[1], $user[2], $user[3], $user[4], $user[5], $user[6],$user[7],$user[0],);
+      $utilisateurs[] = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[6], $user[0],);
     }
 
     fclose($connexion);

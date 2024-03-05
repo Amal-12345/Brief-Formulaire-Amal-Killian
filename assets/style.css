@@ -25,7 +25,9 @@ body {
 
 #reservation,
 #options,
-#coordonnees {
+#coordonnees,
+#recapitulatif,
+#connexion {
   text-align: center;
   border-radius: 10px;
   background-color: rgb(0 0 0 / 50%);
@@ -34,12 +36,13 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 350;
 }
-#reservation {
+#reservation,
+#options {
   margin: -13% 24%;
   width: 50%;
 }
-#options {
-  margin: -13% 24%;
+#recapitulatif {
+  margin: 0% 24%;
   width: 50%;
 }
 #coordonnees:not(#boutonRetour, #boutonSuivant) {
@@ -103,6 +106,7 @@ body {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+    margin-top: 1%;
 }
 
 .bouton:hover {

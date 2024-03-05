@@ -4,6 +4,7 @@ require_once 'classes/Database.php';
 require_once 'classes/User.php';
 require 'classes/Reservations.php';
 require 'classes/DBReservation.php';
+include "../includes/header.php";
 
 $DatabaseReservation = new DatabaseReservation();
 $Database = new Database();
@@ -128,43 +129,31 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['adressePosta
              }
              
         // Tout s'est bien passé, on peut instancier notre utilisateur :
- $user = new User($nom, $prenom, $email, $password, $telephone, $adressePostale);
+    
+$user = new User($nom, $prenom, $email, $password, $telephone, $adressePostale);
  $retour = $Database->saveUtilisateur($user);
 
-// if ($retour) {
-//     header('location:../connexion.php?succes=inscription');  
-//       exit;
-//     } else {
-//     header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-//     die;
-// //      }
- }
-    
-//  else {
-//         header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
-//         die;
-// }
+}
 
 if (!empty($errorMessages)) {
     foreach ($errorMessages as $error) {
         echo $error . "<br>";
     }
 }
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/style.css">
-    <title>Document</title>
+    <title>Récapitulatif des réservations</title>
 </head>
-
 <body>
-    <fieldset>
+    <fieldset id="recapitulatif">
         <h2>Réservation</h2>
-        <p>La réservation a bien été enregistrée pour <?= $passSelectionDate ?>.</p>
+       <B> <p>La réservation a bien été enregistrée pour <?= $passSelectionDate ?>.</p>
         <p>La facturation par personne est de <?= $passSelection ?>.</p>
         <p>Le prix total pour <?= $nombrePlaces ?> personne(s) sera de <?= $PrixTotalPass ?>€.</p>
         <p>l'Email de réservation est <?= $email ?> .</p>
@@ -185,10 +174,9 @@ if (!empty($errorMessages)) {
             <p>Vous avez reservé <?= $nombreLugesEte ?> luge(s) d'été pour un total de <?= $PrixTotalLuge ?>€.</p><?php }
                                                                                                                     ?>
         <h2>Prix total de la réservation</h2>
-        <p>total à payer sur place : <?= $TotalAPayer ?>€ (TTC)</p>
-        <a href="http://briefformulaireamalkillian/connexion.php?"><button class="connect">Se connecter</button>
-</a>
+        <p>Total à payer sur place : <?= $TotalAPayer ?>€ (TTC)</p>
+        <p>Maintenant vous pouvez vous connecter pour consulter toutes vos réservations.</B></p>
+        <a href="http://briefformulaireamalkillian/connexion.php?"><button class="bouton">Se connecter</button></a>
     </fieldset>
 </body>
-
 </html>

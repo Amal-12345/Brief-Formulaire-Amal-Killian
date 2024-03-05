@@ -1,6 +1,7 @@
 <?php
 
-class User {
+class User
+{
     private $_id;
     private $_nom;
     private $_prenom;
@@ -12,8 +13,9 @@ class User {
     private $_adressePostale;
     private $_role;
 
-    function __construct(string $nom, string $prenom, string $mail,string $password, $telephone, string $adressePostale,int|string $id = null, string $role = "user") {
-   
+    function __construct(string $nom, string $prenom, string $mail, string $password, $telephone, string $adressePostale, int|string $id = null, string $role = "user")
+    {
+
         $this->setId($id);
         $this->setNom($nom);
         $this->setPrenom($prenom);
@@ -24,11 +26,13 @@ class User {
         $this->setRole($role);
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->_id;
     }
 
-    public function setId($id): void {
+    public function setId($id): void
+    {
         if ($id === null) {
             $this->_id = $this->creerNouvelId();
         } else {
@@ -36,64 +40,80 @@ class User {
         }
     }
 
-    public function getNom(): string {
+    public function getNom(): string
+    {
         return $this->_nom;
     }
 
-    public function setNom(string $nom): void {
+    public function setNom(string $nom): void
+    {
         $this->_nom = $nom;
     }
 
-    public function getPrenom(): string {
+    public function getPrenom(): string
+    {
         return $this->_prenom;
     }
 
-    public function setPrenom(string $prenom): void {
+    public function setPrenom(string $prenom): void
+    {
         $this->_prenom = $prenom;
     }
 
-    public function getMail(): string {
+    public function getMail(): string
+    {
         return $this->_mail;
     }
 
-    public function setMail(string $mail): void {
+    public function setMail(string $mail): void
+    {
         $this->_mail = $mail;
     }
-public function getPassword(): string {
-    return $this->_password;
-  }
-  public function setPassword(string $password): void {
-    $this->_password = $password;
-  }
-    public function getTelephone() {
+    public function getPassword(): string
+    {
+        return $this->_password;
+    }
+    public function setPassword(string $password): void
+    {
+        $this->_password = $password;
+    }
+    public function getTelephone()
+    {
         return $this->_telephone;
     }
 
-    public function setTelephone($telephone): void {
+    public function setTelephone($telephone): void
+    {
         $this->_telephone = $telephone;
     }
 
-    public function getAdressePostale(): string {
+    public function getAdressePostale(): string
+    {
         return $this->_adressePostale;
     }
 
-    public function setAdressePostale(string $adressePostale): void {
+    public function setAdressePostale(string $adressePostale): void
+    {
         $this->_adressePostale = $adressePostale;
     }
 
-    public function getRole(): string {
+    public function getRole(): string
+    {
         return $this->_role;
     }
 
-    public function setRole(string $role): void {
+    public function setRole(string $role): void
+    {
         $this->_role = $role;
     }
 
-    public function isAdmin(): bool {
+    public function isAdmin(): bool
+    {
         return $this->getRole() === "admin";
     }
 
-    private function creerNouvelId(): int {
+    private function creerNouvelId(): int
+    {
         $Database = new Database();
         $utilisateurs = $Database->getAllUtilisateurs();
 
@@ -117,7 +137,8 @@ public function getPassword(): string {
         return $i;
     }
 
-    public function getObjectToArray(): array {
+    public function getObjectToArray(): array
+    {
         return [
             "id" => $this->getId(),
             "nom" => $this->getNom(),

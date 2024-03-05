@@ -33,9 +33,8 @@ switch ($url) {
   <?php } ?>
 </head>
 <body>
-
   <div id="header">
-    <img src="./medias/Capture_d_écran.png" alt="">
+    <img src="../medias/Capture_d_écran.png" alt="">
     <div>
       <?php if (isset($_SESSION['connecté'])) { ?>
         <a href="deconnexion.php">Déconnexion</a>

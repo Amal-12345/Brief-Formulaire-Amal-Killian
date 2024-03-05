@@ -11,10 +11,19 @@ if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
 }
 $user = unserialize($_SESSION['user']);
 
-if (!$user->isAdmin()) {
-  header('location: tableau-de-bord.php');
-  die;
-}
+// if (!$user->isAdmin()) {
+//   header('location: tableau-de-bord.php');
+//   die;
+// }
+
+// if ($user->isAdmin()) {
+//     // L'utilisateur est un administrateur
+//   header('location: tableau-admin.php');
+//   exit;
+//   } else {
+//     // L'utilisateur n'est pas un administrateur
+// header('location: tableau-de-bord.php');
+// }
 
 if (isset($_GET['section'])) {
   switch($_GET['section']){
@@ -32,7 +41,7 @@ if (isset($_GET['section'])) {
 include 'includes/header.php';
 ?>
 <main>
-  <?php include 'includes/colonne-admin.php'; ?>
+  <!-- <?php include 'includes/colonne-admin.php'; ?> -->
   <div class="content">
     <?php
       $DB = new Database();

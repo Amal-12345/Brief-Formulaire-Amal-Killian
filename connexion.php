@@ -18,22 +18,17 @@ if (isset($_GET['erreur'])) {
 
 include "includes/header.php";
 ?>
-<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="assets/style-connex.css">
   <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
+  <fieldset id="connexion">
     <h1>Connexion</h1>
-    <?php if ($succes) { ?>
-      <div class="message succes">
-        Votre réservation est validée ! <br>
-        Maintenant vous pouvez vous connecter pour consulter toutes vos réservations.
-      </div>
-    <?php } ?>
-    <div class="input-group">
+    <div class="input-group1">
     <label for="mail">Mail :</label>
-    <input type="email" class="input-group" name="mail" id="mail" required>
+    <input type="email" class="input-group1" name="mail" id="mail" required>
     </div>
-    <div class="input-group">
+    <div class="input-group1">
     <label for="password">Mot de passe :</label>
-    <input type="password" class="input-group" name="password" id="password" required>
+    <input type="password" class="input-group1" name="password" id="password" required>
     </div>
     <div id="message"></div>
     <?php if ($echec) { ?>
@@ -41,6 +36,7 @@ include "includes/header.php";
         Mot de passe ou email invalide.
       </div>
     <?php } ?>
-    <input type="submit" value="Se connecter">
-  </form>
+<button class="bouton">Se connecter</button> 
+ </form>
+</fieldset>
   </html>
