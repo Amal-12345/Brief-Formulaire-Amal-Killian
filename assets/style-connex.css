@@ -1,0 +1,16 @@
+.input-group1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.input-group1 label {
+  margin-right: 28px;
+  text-align: start;
+  display: inline-block;
+  width: 116px;
+  margin-bottom: 16px;
+}
+h1 {
+  margin-bottom: 3%;
+}
